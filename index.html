@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>시험결과 보기 | Q-Net</title>
+    <style>
+        /* 이미지의 폰트와 레이아웃을 최대한 재현한 스타일 */
+        body {
+            font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 40px;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+        }
+
+        .wrapper { width: 1000px; }
+
+        /* 상단 헤더 영역 */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            border-bottom: 2px solid #222;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        h1 { font-size: 28px; margin: 0; font-weight: 600; }
+        .nav { font-size: 12px; color: #666; }
+
+        /* 테이블 공통 스타일 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+            font-size: 14px;
+        }
+        th {
+            background-color: #f8f9fa;
+            border-top: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            padding: 12px;
+            color: #111;
+        }
+        td {
+            border-bottom: 1px solid #e5e5e5;
+            padding: 14px;
+        }
+
+        /* 하이라이트 및 텍스트 효과 */
+        .blue-bold { color: #0066cc; font-weight: bold; }
+        .underline-blue { color: #0066cc; text-decoration: underline; cursor: pointer; }
+
+       /* 중앙 합격 메시지 수정 */
+    .congrats {
+        text-align: center;
+        padding: 30px 0;
+        font-size: 18px; /* 가독성을 위해 약간 키움 */
+        letter-spacing: -0.5px;
+        font-weight: bold; /* 전체 볼드 처리 */
+        color: #222;
+    }
+
+.blue-bold { 
+    color: #0066cc; 
+    /* 이미 부모인 .congrats에서 볼드가 적용되므로 색상만 유지 */
+}
+
+        /* 페이지네이션 버튼 */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 4px;
+            margin-bottom: 20px;
+        }
+        .pagination button {
+            border: 1px solid #ddd;
+            background: #fff;
+            width: 34px;
+            height: 34px;
+            cursor: pointer;
+            color: #444;
+            font-size: 16px;
+        }
+        .pagination button.active {
+            background-color: #555;
+            color: #fff;
+            border-color: #555;
+        }
+
+        /* 하단 안내 박스 */
+        .info-box {
+            background-color: #fcfcfc;
+            border: 1px solid #eeeeee;
+            padding: 15px;
+            font-size: 13px;
+            color: #777;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        .info-box::after {
+            content: '';
+            position: absolute;
+            right: 0; bottom: 0;
+            border-bottom: 15px solid #fff;
+            border-left: 15px solid #ddd;
+        }
+
+        /* 상세 점수 테이블 전용 */
+        .detail-title {
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .detail-table th, .detail-table td {
+            border: 1px solid #dcdcdc;
+        }
+        .bg-total { background-color: #fdfdfd; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <header>
+        <h1>결과 보기</h1>
+        <div class="nav">홈 | 마이페이지 | 원서접수관리 | <b>시험결과 보기</b></div>
+    </header>
+
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 25%;">시험명</th>
+                <th style="width: 10%;">구분</th>
+                <th style="width: 20%;">수험번호</th>
+                <th style="width: 25%;">응시종목</th>
+                <th style="width: 20%;">시험결과</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>2026년 제 63회 세무사</td>
+                <td>1차</td>
+                <td class="underline-blue">13901149</td>
+                <td>세무사</td>
+                <td style="font-weight: bold;">합격</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="congrats">
+        "김지현님 세무사[1차] <span class="blue-bold">합격</span>을 진심으로 축하드립니다."
+    </div>
+
+    <div class="pagination">
+        <button>&laquo;</button>
+        <button>&lt;</button>
+        <button class="active">1</button>
+        <button>&gt;</button>
+        <button>&raquo;</button>
+    </div>
+
+    <div class="info-box">
+        "시험결과"는 해당시험의 합격자발표기간(발표일로부터 60일간)만 조회되며, <span class="blue-bold">수험번호를 클릭하면 득점내역을 조회할 수 있습니다.</span>
+    </div>
+
+    <div class="detail-title">2026년 제 63회 세무사 (1차) - 세무사</div>
+    <table class="detail-table">
+        <thead>
+            <tr>
+                <th>수험번호</th>
+                <th>이름</th>
+                <th>종목(자격)</th>
+                <th>합격여부</th>
+                <th>과목</th>
+                <th>취득득점</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td rowspan="4">13901149</td>
+                <td rowspan="4">김지현</td> <td rowspan="4">세무사</td>
+                <td rowspan="4">합격</td>
+                <td>재정학</td>
+                <td>72.5</td>
+            </tr>
+            <tr>
+                <td>세법학개론</td>
+                <td>70</td>
+            </tr>
+            <tr>
+                <td>회계학개론</td>
+                <td>70</td>
+            </tr>
+            <tr>
+                <td>상법</td>
+                <td>77.5</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr class="bg-total">
+                <td>평균</td>
+                <td colspan="2">72.5</td>
+                <td colspan="2">총점</td>
+                <td>290</td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+
+</body>
+</html>
